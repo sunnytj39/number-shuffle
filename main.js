@@ -29,12 +29,11 @@ function shuffleNumber(element, speed = 50, time = 500) {
     })
   }
 
-  async function anim() {
+  async function start() {
     for (var i = 0; i < numLength; i++) {
       const res = await shuffle(i);
     }
   }
 
-  anim();
-
+  start();
 }
