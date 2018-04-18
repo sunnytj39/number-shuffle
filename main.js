@@ -4,6 +4,8 @@
 var element = document.getElementById('target');
 shuffleNumber(element, 100, 10);
 
+/******************************************************************/
+
 function shuffleNumber(element, speed = 50, time = 500) {
   // 対象の文字長を取得
   const numLength = element.textContent.length;
