@@ -6,11 +6,13 @@ shuffleNumber(element, 100, 10, 256);
 
 /******************************************************************/
 
-function shuffleNumber(element, speed = 50, time = 500, after = 25) {
-  // 対象の文字長を取得
+function shuffleNumber(element, speed = 50, time = 500, after = 256) {
+  // 対象の桁数を取得
   const numLength = element.textContent.length;
+  // 結果後の文字
+  const afterStr = after.toString(10);
   // 結果後の桁数
-  const resultLength = after.toString(10).length;
+  const resultLength = afterStr.length;
   // 結果の文字列
   let result = '';
 
@@ -22,20 +24,21 @@ function shuffleNumber(element, speed = 50, time = 500, after = 25) {
       const si = setInterval(function() {
         // ランダムな文字列を生成
         let shuffleStr = '';
-        for (var i = 0; i < numLength - remain; i++) {
+        for (let i = 0; i < numLength - remain; i++) {
           shuffleStr += Math.floor(Math.random() * 9);
         }
         // timeに達するまで繰り返す
         if(count < time) {
+          // テキストを書き換え
           element.textContent = result + shuffleStr;
           count++;
         } else {
           if (remain == resultLength - 1) {
-            // 結果を代入
-            result += after.toString(10).slice(remain, remain + 1);
+            // 結果の該当する桁を代入
+            result += afterStr.slice(remain, remain + 1);
             element.textContent = result;
           } else {
-            result += after.toString(10).slice(remain, remain + 1);
+            result += afterStr.slice(remain, remain + 1);
             element.textContent = result + shuffleStr;
           }
           // Intervalを解除
